@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,14 +30,11 @@ public class NumbersActivity extends AppCompatActivity {
         numbers.add("Nine");
         numbers.add("Ten");
 
-        LinearLayout rootView = findViewById(R.id.rootView);
 
-
-
-        for (int index = 0; index <numbers.size(); index + +){
-            TextView wordView = new TextView(this);
-            wordView.setText(numbers.get(index));
-            rootView.addView(wordView);
+        for (int index = 0; index <numbers.size(); index ++){
+            ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, numbers);
+            ListView listView = (ListView) findViewById(R.id.list);
+            listView.setAdapter(itemsAdapter);;
 
         }
     }
